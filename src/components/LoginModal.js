@@ -9,13 +9,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { Route, Link } from 'react-router-dom';
 
 export default class LoginModal extends React.Component {
-
-
   render() {
-    // const { showLoginModal } = this.props.store.appState;
     const { isLoginModalOpen, handleCloseLoginModal } = this.props;
-    // console.warn("re render: " + JSON.stringify(this.props.store.appState));
-    console.warn("render: " + isLoginModalOpen);
     return (
         <Dialog
           open={isLoginModalOpen}

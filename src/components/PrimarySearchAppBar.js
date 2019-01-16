@@ -107,9 +107,6 @@ class PrimarySearchAppBar extends React.Component {
 		this.props.store.authenticate();
 	}
 
-
-
-
   state = {
     anchorEl: null,
     mobileMoreAnchorEl: null,
@@ -246,8 +243,9 @@ class PrimarySearchAppBar extends React.Component {
                 color="inherit"
               >
                 <AccountCircle />
-                <LoginModal isLoginModalOpen={isLoginModalOpen} handleCloseLoginModal={this.handleCloseLoginModal}/>
               </IconButton>
+
+              <LoginModal isLoginModalOpen={isLoginModalOpen} handleCloseLoginModal={this.handleCloseLoginModal}/>
             </div>
             <div className={classes.sectionMobile}>
               <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">

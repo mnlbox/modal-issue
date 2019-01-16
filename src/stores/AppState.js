@@ -2,14 +2,12 @@ import { observable, action } from 'mobx';
 import axios from 'axios';
 
 export default class AppState {
-  @observable showLoginModal;
   @observable authenticated;
   @observable authenticating;
   @observable items;
   @observable item;
 
   constructor() {
-    this.showLoginModal = false;
     this.authenticated = false;
     this.authenticating = false;
     this.items = [];
@@ -50,15 +48,5 @@ export default class AppState {
         resolve(this.authenticated);
       }, 0);
     });
-  }
-
-  @action openLoginModal() {
-    this.showLoginModal = true;
-  }
-
-  @action closeLoginModal() {
-    // console.warn("showLoginModal old: " + this.showLoginModal);
-    this.showLoginModal = false;
-    // console.warn("showLoginModal new: " + this.showLoginModal);
   }
 }

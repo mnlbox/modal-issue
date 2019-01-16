@@ -107,15 +107,26 @@ class PrimarySearchAppBar extends React.Component {
 		this.props.store.authenticate();
 	}
 
+
+
+
   state = {
     anchorEl: null,
     mobileMoreAnchorEl: null,
+    isLoginModalOpen: false,
   };
 
+  handleClickOpenLoginModal = () => {
+    this.setState({ isLoginModalOpen: true });
+  };
 
-  openLoginModal = () => {
-    this.store.openLoginModal();
-  }
+  handleCloseLoginModal = () => {
+    this.setState({ isLoginModalOpen: false });
+  };
+
+  // openLoginModal = () => {
+  //   this.store.openLoginModal();
+  // }
 
   closeLoginModal = () => {
     console.warn("close clicked before - " + this.store.showLoginModal);;
@@ -141,7 +152,7 @@ class PrimarySearchAppBar extends React.Component {
   };
 
   render() {
-    const { anchorEl, mobileMoreAnchorEl } = this.state;
+    const { anchorEl, mobileMoreAnchorEl, isLoginModalOpen } = this.state;
     const { classes } = this.props;
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -231,11 +242,11 @@ class PrimarySearchAppBar extends React.Component {
               <IconButton
                 aria-owns={isMenuOpen ? 'material-appbar' : undefined}
                 aria-haspopup="true"
-                onClick={this.openLoginModal}
+                onClick={this.handleClickOpenLoginModal}
                 color="inherit"
               >
                 <AccountCircle />
-                <LoginModal showLoginModal={showLoginModal} closeLoginModal={this.closeLoginModal}/>
+                <LoginModal isLoginModalOpen={isLoginModalOpen} handleCloseLoginModal={this.handleCloseLoginModal}/>
               </IconButton>
             </div>
             <div className={classes.sectionMobile}>

@@ -9,15 +9,17 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { Route, Link } from 'react-router-dom';
 
 export default class LoginModal extends React.Component {
+
+
   render() {
     // const { showLoginModal } = this.props.store.appState;
-    const { showLoginModal, closeLoginModal } = this.props;
+    const { isLoginModalOpen, handleCloseLoginModal } = this.props;
     // console.warn("re render: " + JSON.stringify(this.props.store.appState));
-    console.warn("render: " + showLoginModal);
+    console.warn("render: " + isLoginModalOpen);
     return (
         <Dialog
-          open={showLoginModal}
-          onClose={closeLoginModal}
+          open={isLoginModalOpen}
+          onClose={handleCloseLoginModal}
           aria-labelledby="form-dialog-title"
         >
           <DialogTitle id="form-dialog-title">Login</DialogTitle>
@@ -43,7 +45,7 @@ export default class LoginModal extends React.Component {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={closeLoginModal} color="primary">
+            <Button onClick={handleCloseLoginModal} color="primary">
               Cancel
             </Button>
             <Button onClick={this.closeLoginModal} color="primary">
